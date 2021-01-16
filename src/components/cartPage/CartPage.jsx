@@ -6,7 +6,7 @@ import CartPageInfoBlock from "./CartPageInfoBlock"
 
 const CartPage = props => {
     const productsInCart = props.productsInCart.map(product => {
-        return (<CartPageInfoBlock price={product.price} name={product.name} quantity={product.quantityInCart} discount={product.discount} />)
+        return (<CartPageInfoBlock key={product.id} price={product.price} name={product.name} quantity={product.quantityInCart} discount={product.discount} />)
     })
     if (props.productsInCart.length === 0) return <Redirect to='/' />
     return (
