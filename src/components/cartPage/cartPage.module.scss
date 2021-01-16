@@ -1,0 +1,33 @@
+.cartPage{
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.InfoBloks{
+
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 10px;
+    padding: 10px;
+}
+
+.totalPrice{
+    margin-left: 200px;
+
+    button{
+        display: block;
+
+        padding: 5px 22px;
+
+        border: 1px solid grey;
+        border-radius: 5px;
+
+        outline: none;
+
+        background-color: rgb(0,45,114);
+
+        color: white;
+    }
+}
