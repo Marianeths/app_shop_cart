@@ -3,8 +3,8 @@
 
     padding: 10px;
     margin: 10px;
-
     border: 3px solid rgba(128, 128, 128, 0.384);
+    
 
     div:not(.productName){
         margin: 8px;
@@ -15,7 +15,11 @@
         display: inline-block;
         float: right;
     }
+    
+
 }
+
+
 
 .productName{
     text-align: center;
