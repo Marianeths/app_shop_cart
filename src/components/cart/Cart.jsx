@@ -17,7 +17,7 @@ const Cart = props => {
     return (
         <div className={style.cart}>
             <div>{props.totalPrice}</div>
-            {props.productsInCart.length === 0 ? <img className={style.cartImg} src={cartPng} alt="Картинка утеряна,просим прощения" /> : <img onClick={() => { setOpen(true) }} className={style.cartImg + ' ' + style.cartImgPointer} src={cartPng} alt="Картинка утеряна,просим прощения" />}
+            {props.productsInCart.length === 0 ? <img className={style.cartImg} src={cartPng} alt="Корзина" /> : <img onClick={() => { setOpen(true) }} className={style.cartImg + ' ' + style.cartImgPointer} src={cartPng} alt="Картинка утеряна,просим прощения" />}
             {props.productsInCart.length > 0 ? <CartInside open={open} setOpen={setOpen} productsInCart={props.productsInCart} changeQuantity={props.changeQuantity} updateTotalPrice={props.updateTotalPrice} totalPrice={props.totalPrice}/> : <></>}
         </div>
     )

@@ -8,7 +8,7 @@ const ProductBlock = props =>{
     return(
         <div className={style.productBlockWrapper}>
             <div className={style.productImg}>
-                <img src={props.img} alt="Картинка пропала,скоро найдем"/>
+                <img src={props.img} alt={props.name}/>
             </div>
             <div className={style.productInfo}>
                 <div>
