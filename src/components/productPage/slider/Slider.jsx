@@ -5,7 +5,6 @@ import Slide from './Slide'
 import style from './slider.module.scss'
 
 const Slider = (props) => {
-    console.log('rerender')
     const [activeIndex, setActiveIndex] = useState(0);
     const [hovered, setHovered] = useState(true);//вынужденное true которое сразу единожды меняется на false для того что бы анимация прогресса просмотра слайда работала и стартовый слайд
     const [hoveredStart, setHoveredStart] = useState(false);
