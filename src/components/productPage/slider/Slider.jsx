@@ -5,8 +5,10 @@ import Slide from './Slide'
 import style from './slider.module.scss'
 
 const Slider = (props) => {
+    console.log('rerender')
     const [activeIndex, setActiveIndex] = useState(0);
-    const [hovered, setHovered] = useState(false);
+    const [hovered, setHovered] = useState(true);//вынужденное true которое сразу единожды меняется на false для того что бы анимация прогресса просмотра слайда работала и стартовый слайд
+    const [hoveredStart, setHoveredStart] = useState(false);
 
     const slides = props.slides.map((slide) => {
         return <Slide key={slide.id} title={slide.title} color={slide.color} activeIndex={activeIndex} setActiveIndex={setActiveIndex} quantitySlide={props.slides.length} />
@@ -22,7 +24,12 @@ const Slider = (props) => {
 
             return () => clearInterval(interval)
         }
-    }, [slides.length, activeIndex, hovered]);
+
+        if(!hoveredStart){
+            setHoveredStart(true)
+            setHovered(false)
+        }
+    }, [slides.length, activeIndex, hovered, hoveredStart]);
 
     const prevImageIndex = activeIndex ? activeIndex - 1 : slides.length - 1
     const nextImageIndex = activeIndex === slides.length - 1 ? 0 : activeIndex + 1
@@ -35,7 +42,6 @@ const Slider = (props) => {
                 {id:index}
             )
         })
-
         const slideСhoiceItemArray = itemsArrayID.map((item,ind,arr)=>{
             if(activeIndex===arr.length-1 || activeIndex===0){
                 if(item.id === arr.length-1 || item.id===0){
@@ -71,7 +77,7 @@ const Slider = (props) => {
             else{
                 return(
                 <div className={style.slideСhoiceItem} onClick={()=>{setActiveIndex(item.id)}} key={item.id}>
-                    <div className={item.id===activeIndex && hovered === false ? style.slideСhoiceItemProgressBar + ' ' + style.slideСhoiceItemProgressBarActive : style.slideСhoiceItemProgressBar}></div>
+                    <div className={item.id===activeIndex && hovered === false ? style.slideСhoiceItemProgressBar + ' ' + style.slideСhoiceItemProgressBarActive : style.slideСhoiceItemProgressBar} ></div>
                 </div>
                 )
             }
