@@ -78,7 +78,7 @@
 }
 
 .slideСhoiceItemProgressBarActive{
-    transition-duration: 2s;
+    //transition-duration: 2s; для соотношения времени с реальным временем перехода слайда, это свойсво указывается напрямую в html
     transition-timing-function: linear;
     width:100%;
 }
