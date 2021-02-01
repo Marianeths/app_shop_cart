@@ -29,13 +29,35 @@ const Slider = (props) => {
     const nextImageIndex = activeIndex === slides.length - 1 ? 0 : activeIndex + 1
 
 
-    return (
-        <div className={style.slider}>
-            <div className={style.slideBlock + " " + style.prevSlideBlock} key={prevImageIndex}>{slides[prevImageIndex]}</div>
-            <div className={style.slideBlock} key={activeIndex} onMouseOver={() => setHovered(true)} onMouseOut={() => setHovered(false)}>{slides[activeIndex]}</div>
-            <div className={style.slideBlock + " " + style.nextSlideBlock} key={nextImageIndex}>{slides[nextImageIndex]}</div>
+        const itemsArray = new Array(slides.length)
+        itemsArray.fill(null)
+        const itemsArrayID = itemsArray.map((item, index)=>{
+            return(
+                {id:index}
+            )
+        })
 
-        </div>
+        const slideСhoiceItemArray = itemsArrayID.map((item)=>{
+            return (
+                item.id<activeIndex-1 || item.id>activeIndex+1 ? <div className={style.slideСhoiceItem + ' ' + style.slideСhoiceItemDisabled}></div> 
+                :<div className={style.slideСhoiceItem} onClick={()=>{setActiveIndex(item.id)}} key={item.id}>
+                    <div className={item.id===activeIndex ? style.slideСhoiceItemProgressBar + ' ' + style.slideСhoiceItemProgressBarActive : style.slideСhoiceItemProgressBar}></div>
+                </div>
+            )
+        })
+    
+
+    return (
+        <>
+            <div className={style.slider}>
+                <div className={style.slideBlock + " " + style.prevSlideBlock} key={prevImageIndex}>{slides[prevImageIndex]}</div>
+                <div className={style.slideBlock} key={activeIndex} onMouseOver={() => setHovered(true)} onMouseOut={() => setHovered(false)}>{slides[activeIndex]}</div>
+                <div className={style.slideBlock + " " + style.nextSlideBlock} key={nextImageIndex}>{slides[nextImageIndex]}</div>
+            </div>
+            <div className={style.slideСhoiceItemBlock}>
+                {slideСhoiceItemArray}
+            </div>
+        </>
     )
 }
 

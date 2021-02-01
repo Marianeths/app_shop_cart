@@ -10,6 +10,8 @@
 
     margin-bottom: 50px;
     margin-top: 30px;
+
+    border-radius: 4px;
 }
 
 .slideBlock{
@@ -27,4 +29,54 @@
 
 .nextSlideBlock{
     transform: translateX(100%);
+}
+
+.slideСhoiceItemBlock{
+    position: relative;
+    top: -50px;
+    width: 70%;
+    height: 20px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    z-index: 10;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+.slideСhoiceItem{
+    background-color: rgb(186, 187, 192);
+    width: 35px;
+    height: 5px;
+
+    margin: 0 3px;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+.slideСhoiceItemDisabled{
+    opacity: 0.4;
+    cursor: default;
+}
+
+.slideСhoiceItemProgressBar{
+    position: absolute;
+    
+    width: 0%;
+    height: 100%;
+    background-color: rgb(47, 72, 196);
+
+}
+
+.slideСhoiceItemProgressBarActive{
+    transition-duration: 2s;
+    transition-timing-function: linear;
+    width:100%;
 }
