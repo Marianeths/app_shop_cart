@@ -25,7 +25,6 @@ const Slider = (props) => {
     }, [slides.length, activeIndex, hovered]);
 
     const prevImageIndex = activeIndex ? activeIndex - 1 : slides.length - 1
-
     const nextImageIndex = activeIndex === slides.length - 1 ? 0 : activeIndex + 1
 
 
@@ -37,16 +36,47 @@ const Slider = (props) => {
             )
         })
 
-        const slideСhoiceItemArray = itemsArrayID.map((item)=>{
-            return (
-                item.id<activeIndex-1 || item.id>activeIndex+1 ? <div className={style.slideСhoiceItem + ' ' + style.slideСhoiceItemDisabled}></div> 
-                :<div className={style.slideСhoiceItem} onClick={()=>{setActiveIndex(item.id)}} key={item.id}>
-                    <div className={item.id===activeIndex ? style.slideСhoiceItemProgressBar + ' ' + style.slideСhoiceItemProgressBarActive : style.slideСhoiceItemProgressBar}></div>
+        const slideСhoiceItemArray = itemsArrayID.map((item,ind,arr)=>{
+            if(activeIndex===arr.length-1 || activeIndex===0){
+                if(item.id === arr.length-1 || item.id===0){
+                    return (
+                        <div className={style.slideСhoiceItem} onClick={()=>{setActiveIndex(item.id)}} key={item.id}>
+                            <div className={item.id===activeIndex && hovered === false ? style.slideСhoiceItemProgressBar + ' ' + style.slideСhoiceItemProgressBarActive : style.slideСhoiceItemProgressBar}></div>
+                        </div>
+                        )
+                }
+                else if(item.id<activeIndex - 1 || item.id>activeIndex + 1){
+                    return(
+                    <div className={style.slideСhoiceItem + ' ' + style.slideСhoiceItemDisabled} key={item.id}>
+                        <div className={item.id===activeIndex && hovered === false ? style.slideСhoiceItemProgressBar + ' ' + style.slideСhoiceItemProgressBarActive : style.slideСhoiceItemProgressBar}></div>
+                    </div>
+                    )
+                }
+                else{
+                    return(
+                    <div className={style.slideСhoiceItem} onClick={()=>{setActiveIndex(item.id)}} key={item.id}>
+                        <div className={item.id===activeIndex && hovered === false ? style.slideСhoiceItemProgressBar + ' ' + style.slideСhoiceItemProgressBarActive : style.slideСhoiceItemProgressBar}></div>
+                    </div>
+                    )
+                }
+            }
+
+            else if(item.id<activeIndex - 1 || item.id>activeIndex + 1){
+                return(
+                <div className={style.slideСhoiceItem + ' ' + style.slideСhoiceItemDisabled} key={item.id}>
+                    <div className={item.id===activeIndex && hovered === false ? style.slideСhoiceItemProgressBar + ' ' + style.slideСhoiceItemProgressBarActive : style.slideСhoiceItemProgressBar}></div>
                 </div>
-            )
+                )
+            }
+            else{
+                return(
+                <div className={style.slideСhoiceItem} onClick={()=>{setActiveIndex(item.id)}} key={item.id}>
+                    <div className={item.id===activeIndex && hovered === false ? style.slideСhoiceItemProgressBar + ' ' + style.slideСhoiceItemProgressBarActive : style.slideСhoiceItemProgressBar}></div>
+                </div>
+                )
+            }
         })
     
-
     return (
         <>
             <div className={style.slider}>
